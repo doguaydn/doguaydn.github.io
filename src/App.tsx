@@ -11,12 +11,16 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import LoadingScreen from './components/LoadingScreen';
 import SpotlightCursor from './components/SpotlightCursor';
+import AchievementToast from './components/AchievementToast';
+import HPBar from './components/HPBar';
+import ChiptunePlayer from './components/ChiptunePlayer';
+import MiniMap from './components/MiniMap';
 
 function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2200);
+    const timer = setTimeout(() => setLoading(false), 2500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -46,11 +50,15 @@ function App() {
       </AnimatePresence>
 
       {!loading && (
-        <div className="relative min-h-screen bg-dark-900 grid-bg overflow-x-hidden">
+        <div className="relative min-h-screen bg-dark-900 grid-bg overflow-x-hidden scanlines-overlay">
           <div className="noise-overlay" />
           <SpotlightCursor />
           <Particles />
           <Navbar />
+          <HPBar />
+          <AchievementToast />
+          <MiniMap />
+          <ChiptunePlayer />
 
           <main className="relative z-10 w-full">
             <Hero />

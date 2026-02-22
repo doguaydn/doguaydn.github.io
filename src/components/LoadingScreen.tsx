@@ -1,68 +1,94 @@
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 const LoadingScreen = () => {
+  const { t } = useTranslation();
+
   return (
     <motion.div
-      className="fixed inset-0 z-[200] bg-dark-900 flex items-center justify-center"
+      className="fixed inset-0 z-[200] bg-dark-900 flex items-center justify-center scanlines-overlay"
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5, ease: 'easeInOut' }}
     >
-      <div className="text-center">
-        {/* Logo animation */}
+      <div className="text-center max-w-md px-4 translate-y-8">
+        {/* Pixel art logo */}
         <motion.div
-          initial={{ scale: 0, rotate: -180 }}
-          animate={{ scale: 1, rotate: 0 }}
-          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-6"
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, type: 'spring' }}
+          className="mb-8"
         >
           <motion.span
-            className="font-mono text-5xl font-bold text-primary inline-block"
+            className="font-pixel text-3xl text-primary inline-block"
             animate={{
               textShadow: [
-                '0 0 10px rgba(168,85,247,0.3)',
-                '0 0 30px rgba(168,85,247,0.6)',
-                '0 0 10px rgba(168,85,247,0.3)',
+                '0 0 5px rgba(168,85,247,0.3)',
+                '0 0 20px rgba(168,85,247,0.8)',
+                '0 0 5px rgba(168,85,247,0.3)',
               ],
             }}
             transition={{ duration: 1.5, repeat: Infinity }}
           >
-            &lt;DA /&gt;
+            DA
           </motion.span>
         </motion.div>
 
-        {/* Loading bar */}
-        <motion.div
-          className="w-48 h-[2px] bg-dark-700 rounded-full overflow-hidden mx-auto"
+        {/* Loading text */}
+        <motion.p
+          className="font-pixel text-[10px] text-gray-400 mb-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.3 }}
         >
+          {t('loading.text')}
+        </motion.p>
+
+        {/* RPG progress bar */}
+        <div className="rpg-bar mx-auto mb-8" style={{ width: '260px' }}>
           <motion.div
-            className="h-full rounded-full"
-            style={{
-              background: 'linear-gradient(90deg, #a855f7, #6366f1)',
-            }}
+            className="rpg-bar-fill"
+            style={{ backgroundColor: '#a855f7' }}
             initial={{ width: '0%' }}
             animate={{ width: '100%' }}
-            transition={{ duration: 1.5, delay: 0.5, ease: 'easeInOut' }}
+            transition={{ duration: 1.8, delay: 0.2, ease: 'linear' }}
           />
-        </motion.div>
+        </div>
 
-        {/* Terminal text */}
-        <motion.p
-          className="font-mono text-sm text-gray-500 mt-4"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-        >
-          <motion.span
-            animate={{ opacity: [1, 0, 1] }}
-            transition={{ duration: 0.8, repeat: Infinity }}
+        {/* Boot sequence */}
+        <div className="font-mono text-xs text-left max-w-xs mx-auto space-y-1.5">
+          <motion.p
+            className="text-gray-600"
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 }}
           >
-            _
-          </motion.span>{' '}
-          initializing...
-        </motion.p>
+            {t('loading.step1')}
+          </motion.p>
+          <motion.p
+            className="text-gray-600"
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.8 }}
+          >
+            {t('loading.step2')}
+          </motion.p>
+          <motion.p
+            className="text-gray-600"
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1.3 }}
+          >
+            {t('loading.step3')}
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1.8 }}
+          >
+            <span className="text-primary">[READY]</span>{' '}
+            <span className="text-green-400">{t('loading.ready')}</span>
+          </motion.p>
+        </div>
       </div>
     </motion.div>
   );
