@@ -1,30 +1,33 @@
 import { motion } from 'framer-motion';
 import { FiServer, FiCloud, FiCode, FiSmartphone } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 const About = () => {
+  const { t } = useTranslation();
+
   const expertise = [
     {
       icon: FiServer,
-      title: 'Backend Development',
-      description: 'Building robust APIs and microservices with Node.js, Express, and Java Spring Boot.',
+      title: t('about.expertise.backend.title'),
+      description: t('about.expertise.backend.description'),
       color: '#a855f7',
     },
     {
       icon: FiCloud,
-      title: 'DevOps & Cloud',
-      description: 'Docker, AWS, CI/CD pipelines, and infrastructure automation.',
+      title: t('about.expertise.devops.title'),
+      description: t('about.expertise.devops.description'),
       color: '#3b82f6',
     },
     {
       icon: FiCode,
-      title: 'Frontend Development',
-      description: 'Creating responsive interfaces with React, Vue.js, and modern frameworks.',
+      title: t('about.expertise.frontend.title'),
+      description: t('about.expertise.frontend.description'),
       color: '#be185d',
     },
     {
       icon: FiSmartphone,
-      title: 'Database & Caching',
-      description: 'PostgreSQL, MongoDB, Redis, Elasticsearch for optimal data management.',
+      title: t('about.expertise.database.title'),
+      description: t('about.expertise.database.description'),
       color: '#a855f7',
     },
   ];
@@ -40,9 +43,9 @@ const About = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <span className="font-mono text-primary text-sm">&gt; 01. who_am_i</span>
+          <span className="font-mono text-primary text-sm">{t('about.sectionLabel')}</span>
           <h2 className="text-4xl md:text-5xl font-bold font-display mt-2 mb-4">
-            About <span className="gradient-text">Me</span>
+            {t('about.title')} {t('about.titleHighlight') && <span className="gradient-text">{t('about.titleHighlight')}</span>}
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
         </motion.div>
@@ -61,31 +64,29 @@ const About = () => {
                 <span className="w-3 h-3 rounded-full bg-red-500" />
                 <span className="w-3 h-3 rounded-full bg-yellow-500" />
                 <span className="w-3 h-3 rounded-full bg-green-500" />
-                <span className="ml-2">about.md</span>
+                <span className="ml-2">{t('about.fileLabel')}</span>
               </div>
               <div className="font-mono text-sm space-y-4 text-gray-300">
                 <p>
                   <span className="text-primary">## </span>
-                  Hi there!
+                  {t('about.greeting')}
                 </p>
                 <p>
-                  I'm a <span className="text-primary">Computer Engineer</span> with
-                  <span className="text-accent"> 3+ years</span> of experience building
-                  production-ready applications.
+                  {t('about.bio1a')}<span className="text-primary">{t('about.bio1b')}</span>{t('about.bio1c')}
+                  <span className="text-accent">{t('about.bio1d')}</span>{t('about.bio1e')}
                 </p>
                 <p>
-                  My journey started with curiosity about how systems work, and evolved into
-                  a passion for creating <span className="text-primary">scalable</span>,
-                  <span className="text-accent"> efficient</span>, and
-                  <span className="text-secondary"> reliable</span> software solutions.
+                  {t('about.bio2a')}<span className="text-primary">{t('about.bio2b')}</span>
+                  {t('about.bio2c')}<span className="text-accent">{t('about.bio2d')}</span>
+                  {t('about.bio2e')}<span className="text-secondary">{t('about.bio2f')}</span>
+                  {t('about.bio2g')}
                 </p>
                 <p>
-                  I specialize in <span className="text-primary">backend development</span> but
-                  I'm comfortable working across the entire stack. I love solving complex
-                  problems and turning ideas into reality.
+                  {t('about.bio3a')}<span className="text-primary">{t('about.bio3b')}</span>
+                  {t('about.bio3c')}
                 </p>
                 <p>
-                  <span className="text-gray-500">// Currently open to new opportunities</span>
+                  <span className="text-gray-500">{t('about.bio4')}</span>
                 </p>
               </div>
             </div>
@@ -93,12 +94,12 @@ const About = () => {
             {/* Stats */}
             <div className="grid grid-cols-3 gap-4">
               {[
-                { value: '3+', label: 'Years Experience' },
-                { value: '10+', label: 'Projects Completed' },
-                { value: '2', label: 'Apps in Production' },
+                { value: '3+', label: t('about.stat1Label') },
+                { value: '10+', label: t('about.stat2Label') },
+                { value: '2', label: t('about.stat3Label') },
               ].map((stat, index) => (
                 <motion.div
-                  key={stat.label}
+                  key={index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -122,7 +123,7 @@ const About = () => {
           >
             {expertise.map((item, index) => (
               <motion.div
-                key={item.title}
+                key={index}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}

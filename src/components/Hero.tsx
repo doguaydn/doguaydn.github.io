@@ -2,18 +2,20 @@ import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Typed from 'typed.js';
 import { FiGithub, FiLinkedin, FiMail, FiChevronDown } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 const Hero = () => {
+  const { t, i18n } = useTranslation();
   const typedRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
     if (typedRef.current) {
       const typed = new Typed(typedRef.current, {
         strings: [
-          'Backend Developer',
-          'DevOps Engineer',
-          'Fullstack Developer',
-          'Problem Solver',
+          t('hero.typed.0'),
+          t('hero.typed.1'),
+          t('hero.typed.2'),
+          t('hero.typed.3'),
         ],
         typeSpeed: 50,
         backSpeed: 30,
@@ -24,7 +26,7 @@ const Hero = () => {
 
       return () => typed.destroy();
     }
-  }, []);
+  }, [i18n.language, t]);
 
   const socialLinks = [
     { icon: FiGithub, href: 'https://github.com/doguaydn', label: 'GitHub' },
@@ -43,7 +45,7 @@ const Hero = () => {
           className="mb-4"
         >
           <span className="font-mono text-primary text-sm md:text-base">
-            &gt; Hello World! I'm
+            {t('hero.greeting')}
           </span>
         </motion.div>
 
@@ -75,9 +77,8 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="text-gray-400 text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed"
         >
-          Computer Engineer specialized in building scalable backend systems,
-          cloud infrastructure, and full-stack applications.
-          <span className="text-primary"> 3+ years</span> of turning ideas into production-ready software.
+          {t('hero.description')}
+          <span className="text-primary"> {t('hero.experience')}</span> {t('hero.experienceSuffix')}
         </motion.p>
 
         {/* Tech stack badges */}
@@ -137,7 +138,7 @@ const Hero = () => {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            View My Work
+            {t('hero.cta')}
             <FiChevronDown className="ml-2 animate-bounce" />
           </motion.a>
         </motion.div>

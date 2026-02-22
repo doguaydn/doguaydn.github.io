@@ -7,11 +7,14 @@ import {
   SiExpress, SiSpringboot, SiPrisma, SiSocketdotio
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const Skills = () => {
+  const { t } = useTranslation();
+
   const skillCategories = [
     {
-      title: 'Backend',
+      titleKey: 'skills.backend',
       level: 90,
       color: '#a855f7',
       technologies: [
@@ -24,7 +27,7 @@ const Skills = () => {
       ],
     },
     {
-      title: 'Database',
+      titleKey: 'skills.database',
       level: 85,
       color: '#3b82f6',
       technologies: [
@@ -36,7 +39,7 @@ const Skills = () => {
       ],
     },
     {
-      title: 'DevOps',
+      titleKey: 'skills.devops',
       level: 80,
       color: '#be185d',
       technologies: [
@@ -47,7 +50,7 @@ const Skills = () => {
       ],
     },
     {
-      title: 'Frontend',
+      titleKey: 'skills.frontend',
       level: 70,
       color: '#c084fc',
       technologies: [
@@ -70,9 +73,9 @@ const Skills = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <span className="font-mono text-primary text-sm">&gt; 02. skills</span>
+          <span className="font-mono text-primary text-sm">{t('skills.sectionLabel')}</span>
           <h2 className="text-4xl md:text-5xl font-bold font-display mt-2 mb-4">
-            Tech <span className="gradient-text">Stack</span>
+            {t('skills.title')} <span className="gradient-text">{t('skills.titleHighlight')}</span>
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
         </motion.div>
@@ -81,7 +84,7 @@ const Skills = () => {
         <div className="grid md:grid-cols-2 gap-8">
           {skillCategories.map((category, categoryIndex) => (
             <motion.div
-              key={category.title}
+              key={category.titleKey}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -90,7 +93,7 @@ const Skills = () => {
             >
               {/* Category header with progress bar */}
               <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-display font-semibold">{category.title}</h3>
+                <h3 className="text-xl font-display font-semibold">{t(category.titleKey)}</h3>
                 <span className="font-mono text-sm" style={{ color: category.color }}>
                   {category.level}%
                 </span>
@@ -144,7 +147,7 @@ const Skills = () => {
           className="mt-12 text-center"
         >
           <p className="text-gray-500 font-mono text-sm mb-4">
-            // Other tools & technologies I work with
+            {t('skills.otherTools')}
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             {['Git', 'Linux', 'REST API', 'JWT', 'Microservices', 'Agile/Scrum', 'Jira', 'Postman', 'PM2', 'Sequelize'].map((skill, index) => (

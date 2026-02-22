@@ -1,11 +1,14 @@
 import { motion } from 'framer-motion';
 import { FiMail, FiMapPin, FiGithub, FiLinkedin, FiPhone } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 const Contact = () => {
+  const { t } = useTranslation();
+
   const contactInfo = [
-    { icon: FiMail, label: 'Email', value: 'doguaydin.comp@gmail.com', href: 'mailto:doguaydin.comp@gmail.com' },
-    { icon: FiPhone, label: 'Phone', value: '+90 553 347 50 29', href: 'tel:+905533475029' },
-    { icon: FiMapPin, label: 'Location', value: 'İstanbul, Turkey', href: null },
+    { icon: FiMail, label: t('contact.email'), value: 'doguaydin.comp@gmail.com', href: 'mailto:doguaydin.comp@gmail.com' },
+    { icon: FiPhone, label: t('contact.phone'), value: '+90 553 347 50 29', href: 'tel:+905533475029' },
+    { icon: FiMapPin, label: t('contact.location'), value: t('contact.locationValue'), href: null },
   ];
 
   const socialLinks = [
@@ -24,9 +27,9 @@ const Contact = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <span className="font-mono text-primary text-sm">&gt; 05. contact</span>
+          <span className="font-mono text-primary text-sm">{t('contact.sectionLabel')}</span>
           <h2 className="text-4xl md:text-5xl font-bold font-display mt-2 mb-4">
-            Get In <span className="gradient-text">Touch</span>
+            {t('contact.title')} <span className="gradient-text">{t('contact.titleHighlight')}</span>
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
         </motion.div>
@@ -41,19 +44,17 @@ const Contact = () => {
             transition={{ duration: 0.5 }}
           >
             <h3 className="text-2xl font-display font-semibold mb-4">
-              Let's work together!
+              {t('contact.heading')}
             </h3>
             <p className="text-gray-400 mb-8 leading-relaxed">
-              I'm currently open to new opportunities and interesting projects. 
-              Whether you have a question, want to collaborate, or just want to say hi, 
-              feel free to reach out. I'll try my best to get back to you!
+              {t('contact.description')}
             </p>
 
             {/* Contact info */}
             <div className="space-y-4 mb-8">
               {contactInfo.map((item, index) => (
                 <motion.div
-                  key={item.label}
+                  key={index}
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
@@ -114,25 +115,25 @@ const Contact = () => {
                 <span className="w-3 h-3 rounded-full bg-red-500" />
                 <span className="w-3 h-3 rounded-full bg-yellow-500" />
                 <span className="w-3 h-3 rounded-full bg-green-500" />
-                <span className="ml-2 text-sm text-gray-500 font-mono">contact.sh</span>
+                <span className="ml-2 text-sm text-gray-500 font-mono">{t('contact.terminalFile')}</span>
               </div>
 
               {/* Terminal content */}
               <div className="p-6 font-mono text-sm">
                 <p className="text-gray-500 mb-2">
-                  <span className="text-primary">$</span> cat contact_info.txt
+                  <span className="text-primary">$</span> {t('contact.terminalCmd1').replace('$ ', '')}
                 </p>
                 <div className="space-y-1 mb-4 text-gray-400">
-                  <p>Name: Doğukan Aydın</p>
-                  <p>Role: Fullstack Developer</p>
-                  <p>Status: <span className="text-green-400">Available for hire</span></p>
+                  <p>{t('contact.terminalName')}</p>
+                  <p>{t('contact.terminalRole')}</p>
+                  <p>Status: <span className="text-green-400">{t('contact.terminalStatus')}</span></p>
                 </div>
-                
+
                 <p className="text-gray-500 mb-2">
-                  <span className="text-primary">$</span> send_message --to doguaydin
+                  <span className="text-primary">$</span> {t('contact.terminalCmd2').replace('$ ', '')}
                 </p>
                 <p className="text-secondary mb-4">
-                  Ready to receive your message...
+                  {t('contact.terminalReady')}
                 </p>
 
                 <motion.a
@@ -141,7 +142,7 @@ const Contact = () => {
                   whileTap={{ scale: 0.98 }}
                   className="block w-full py-3 bg-primary text-dark-900 font-semibold text-center rounded-lg hover:bg-primary/90 transition-colors"
                 >
-                  Say Hello 👋
+                  {t('contact.sayHello')} 👋
                 </motion.a>
               </div>
             </div>

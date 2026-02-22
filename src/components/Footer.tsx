@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
 import { FiGithub, FiLinkedin, FiMail, FiHeart } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
+  const { t } = useTranslation();
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
@@ -41,7 +43,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <p className="text-sm text-gray-500 font-mono flex items-center gap-1">
-            Built with <FiHeart className="text-primary" size={14} /> by Doğukan Aydın
+            {t('footer.builtWith')} <FiHeart className="text-primary" size={14} /> {t('footer.by')}
             <span className="mx-2">•</span>
             {currentYear}
           </p>

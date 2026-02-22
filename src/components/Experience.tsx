@@ -1,57 +1,60 @@
 import { motion } from 'framer-motion';
 import { FiBriefcase, FiCalendar, FiMapPin } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
 const Experience = () => {
+  const { t } = useTranslation();
+
   const experiences = [
     {
-      title: 'Full Stack Developer',
+      title: t('experience.job1.title'),
       company: 'Kariyer Zamanı',
       location: 'İstanbul',
-      period: 'Jan 2024 - Dec 2025',
+      period: t('experience.job1.period'),
       description: [
-        'Developed and maintained job search platform serving thousands of users',
-        'Implemented Elasticsearch with Turkish analyzers, reducing search time from 2s to 200ms',
-        'Built Redis caching layer reducing database load by 60%',
-        'Set up CI/CD pipeline with GitHub Actions and Docker deployment',
-        'Managed AWS EC2 infrastructure with Nginx and PM2',
+        t('experience.job1.desc0'),
+        t('experience.job1.desc1'),
+        t('experience.job1.desc2'),
+        t('experience.job1.desc3'),
+        t('experience.job1.desc4'),
       ],
       tech: ['Node.js', 'PostgreSQL', 'Elasticsearch', 'Redis', 'Docker', 'AWS'],
     },
     {
-      title: 'Freelance Full Stack Developer',
+      title: t('experience.job2.title'),
       company: 'Remote',
       location: 'Remote',
-      period: 'Jun 2025 - Present',
+      period: t('experience.job2.period'),
       description: [
-        'Building ERP system with microservice architecture',
-        'Developing Auth, Product, and Stock services with Java Spring Boot',
-        'Implementing async messaging with RabbitMQ',
-        'Creating frontend interfaces with Vue.js',
+        t('experience.job2.desc0'),
+        t('experience.job2.desc1'),
+        t('experience.job2.desc2'),
+        t('experience.job2.desc3'),
       ],
       tech: ['Java', 'Spring Boot', 'Vue.js', 'MongoDB', 'RabbitMQ'],
     },
     {
-      title: 'Freelance Developer',
+      title: t('experience.job3.title'),
       company: 'E-HR Project',
       location: 'Remote',
-      period: 'Jan 2023 - Dec 2023',
+      period: t('experience.job3.period'),
       description: [
-        'Built backend architecture for employee management system',
-        'Designed PostgreSQL database schema',
-        'Implemented JWT authentication and REST API',
-        'App published on App Store as "Proteam HR"',
+        t('experience.job3.desc0'),
+        t('experience.job3.desc1'),
+        t('experience.job3.desc2'),
+        t('experience.job3.desc3'),
       ],
       tech: ['Node.js', 'Express', 'PostgreSQL', 'JWT'],
     },
     {
-      title: 'Software Development Intern',
+      title: t('experience.job4.title'),
       company: 'Antsoft IT Services',
       location: 'İstanbul',
-      period: 'Jul 2023 - Sep 2023',
+      period: t('experience.job4.period'),
       description: [
-        'Gained hands-on experience with web technologies',
-        'Worked on full-stack development projects',
-        'Learned industry best practices and agile methodologies',
+        t('experience.job4.desc0'),
+        t('experience.job4.desc1'),
+        t('experience.job4.desc2'),
       ],
       tech: ['JavaScript', 'HTML/CSS', 'Git'],
     },
@@ -68,9 +71,9 @@ const Experience = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <span className="font-mono text-primary text-sm">&gt; 04. experience</span>
+          <span className="font-mono text-primary text-sm">{t('experience.sectionLabel')}</span>
           <h2 className="text-4xl md:text-5xl font-bold font-display mt-2 mb-4">
-            Where I've <span className="gradient-text">Worked</span>
+            {t('experience.title')} <span className="gradient-text">{t('experience.titleHighlight')}</span>
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
         </motion.div>
@@ -82,7 +85,7 @@ const Experience = () => {
 
           {experiences.map((exp, index) => (
             <motion.div
-              key={exp.title + exp.company}
+              key={index}
               initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -157,11 +160,11 @@ const Experience = () => {
           viewport={{ once: true }}
           className="mt-16 text-center"
         >
-          <h3 className="text-xl font-display font-semibold mb-6">Education</h3>
+          <h3 className="text-xl font-display font-semibold mb-6">{t('experience.educationTitle')}</h3>
           <div className="bg-dark-900/50 border border-gray-800 rounded-xl p-6 max-w-md mx-auto">
-            <h4 className="text-lg font-semibold">Bachelor's in Computer Engineering</h4>
-            <p className="text-primary font-mono text-sm">Üsküdar University</p>
-            <p className="text-gray-500 text-sm mt-1">Sep 2020 - Jun 2025 • İstanbul</p>
+            <h4 className="text-lg font-semibold">{t('experience.degree')}</h4>
+            <p className="text-primary font-mono text-sm">{t('experience.university')}</p>
+            <p className="text-gray-500 text-sm mt-1">{t('experience.educationPeriod')}</p>
           </div>
         </motion.div>
       </div>

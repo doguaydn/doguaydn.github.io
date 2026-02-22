@@ -1,12 +1,15 @@
 import { motion } from 'framer-motion';
 import { FiExternalLink, FiGithub, FiFolder } from 'react-icons/fi';
 import { SiAppstore } from 'react-icons/si';
+import { useTranslation } from 'react-i18next';
 
 const Projects = () => {
+  const { t } = useTranslation();
+
   const featuredProjects = [
     {
       title: 'Kariyer Zamani',
-      description: 'Full-stack job search platform with advanced search capabilities. Implemented Elasticsearch with Turkish language support, Redis caching (60% DB load reduction), and real-time features.',
+      description: t('projects.kariyerZamani.description'),
       tech: ['Node.js', 'Express', 'PostgreSQL', 'Elasticsearch', 'Redis', 'Docker', 'AWS'],
       links: {
         live: 'https://kariyerzamani.com',
@@ -16,7 +19,7 @@ const Projects = () => {
     },
     {
       title: 'Proteam HR',
-      description: 'Employee management system for part-time workers. Features include invoicing, work tracking, leave management, and scheduling. Live on App Store.',
+      description: t('projects.proteamHR.description'),
       tech: ['Node.js', 'Express', 'PostgreSQL', 'JWT', 'REST API'],
       links: {
         appstore: 'https://apps.apple.com/tr/app/proteam-e-i-k/id6692632266',
@@ -26,7 +29,7 @@ const Projects = () => {
     },
     {
       title: 'Hangify',
-      description: 'Social events platform (launching soon). Real-time notifications, event management, and user interactions with Socket.io integration.',
+      description: t('projects.hangify.description'),
       tech: ['TypeScript', 'Prisma', 'Socket.io', 'Redis', 'Elasticsearch', 'Digital Ocean'],
       links: {
         github: '#',
@@ -38,18 +41,18 @@ const Projects = () => {
 
   const otherProjects = [
     {
-      title: 'ERP System',
-      description: 'Enterprise resource planning with microservice architecture.',
+      title: t('projects.erp.title'),
+      description: t('projects.erp.description'),
       tech: ['Java', 'Spring Boot', 'Vue.js', 'MongoDB', 'RabbitMQ'],
     },
     {
-      title: 'AI Outlier Detection',
-      description: 'Research project combining OCSVM with CNN for improved accuracy.',
+      title: t('projects.aiOutlier.title'),
+      description: t('projects.aiOutlier.description'),
       tech: ['Python', 'TensorFlow', 'Scikit-learn', 'OpenCV'],
     },
     {
-      title: 'Weather Prediction',
-      description: 'ML-powered forecasting with LSTM and Random Forest.',
+      title: t('projects.weather.title'),
+      description: t('projects.weather.description'),
       tech: ['Python', 'LSTM', 'Pandas', 'WeatherAPI'],
     },
   ];
@@ -65,9 +68,9 @@ const Projects = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-16"
         >
-          <span className="font-mono text-primary text-sm">&gt; 03. projects</span>
+          <span className="font-mono text-primary text-sm">{t('projects.sectionLabel')}</span>
           <h2 className="text-4xl md:text-5xl font-bold font-display mt-2 mb-4">
-            Featured <span className="gradient-text">Work</span>
+            {t('projects.title')} <span className="gradient-text">{t('projects.titleHighlight')}</span>
           </h2>
           <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
         </motion.div>
@@ -126,7 +129,7 @@ const Projects = () => {
               {/* Project info */}
               <div className={`md:col-span-5 ${index % 2 === 1 ? 'md:order-1' : ''}`}>
                 <span className="font-mono text-sm" style={{ color: project.color }}>
-                  Featured Project
+                  {t('projects.featuredLabel')}
                 </span>
                 <h3 className="text-2xl md:text-3xl font-bold font-display mt-2 mb-4">
                   {project.title}
@@ -193,13 +196,13 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center mb-8"
         >
-          <h3 className="text-2xl font-display font-semibold">Other Noteworthy Projects</h3>
+          <h3 className="text-2xl font-display font-semibold">{t('projects.otherTitle')}</h3>
         </motion.div>
 
         <div className="grid md:grid-cols-3 gap-6">
           {otherProjects.map((project, index) => (
             <motion.div
-              key={project.title}
+              key={index}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

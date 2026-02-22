@@ -1,19 +1,28 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiMenu, FiX } from 'react-icons/fi';
+import { useTranslation } from 'react-i18next';
 
-const navItems = [
-  { name: 'Home', href: '#home' },
-  { name: 'About', href: '#about' },
-  { name: 'Skills', href: '#skills' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Experience', href: '#experience' },
-  { name: 'Contact', href: '#contact' },
+const navKeys = [
+  { key: 'nav.home', href: '#home' },
+  { key: 'nav.about', href: '#about' },
+  { key: 'nav.skills', href: '#skills' },
+  { key: 'nav.projects', href: '#projects' },
+  { key: 'nav.experience', href: '#experience' },
+  { key: 'nav.contact', href: '#contact' },
 ];
 
 const Navbar = () => {
+  const { t, i18n } = useTranslation();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const currentLang = i18n.language;
+  const resumeUrl = currentLang === 'tr' ? '/cv-tr.pdf' : '/cv.pdf';
+
+  const toggleLanguage = () => {
+    i18n.changeLanguage(currentLang === 'en' ? 'tr' : 'en');
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -49,9 +58,9 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center flex-1 justify-center">
             <div className="flex items-center gap-8">
-              {navItems.map((item, index) => (
+              {navKeys.map((item, index) => (
                 <motion.a
-                  key={item.name}
+                  key={item.key}
                   href={item.href}
                   className="font-mono text-sm text-gray-400 hover:text-primary transition-colors relative group"
                   initial={{ opacity: 0, y: -20 }}
@@ -59,18 +68,27 @@ const Navbar = () => {
                   transition={{ delay: index * 0.1 }}
                 >
                   <span className="text-primary mr-1">{String(index).padStart(2, '0')}.</span>
-                  {item.name}
+                  {t(item.key)}
                   <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
                 </motion.a>
               ))}
+              {/* Language Toggle */}
+              <button
+                onClick={toggleLanguage}
+                className="font-mono text-sm flex items-center gap-1 cursor-pointer"
+              >
+                <span className={currentLang === 'en' ? 'text-primary' : 'text-gray-500'}>EN</span>
+                <span className="text-gray-600">|</span>
+                <span className={currentLang === 'tr' ? 'text-primary' : 'text-gray-500'}>TR</span>
+              </button>
               <motion.a
-                href="/cv.pdf"
+                href={resumeUrl}
                 target="_blank"
                 className="px-4 py-2 border border-primary text-primary font-mono text-sm rounded hover:bg-primary/10 transition-all"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                Resume
+                {t('nav.resume')}
               </motion.a>
             </div>
           </div>
@@ -96,9 +114,9 @@ const Navbar = () => {
             className="md:hidden bg-dark-800/95 backdrop-blur-md border-b border-primary/10"
           >
             <div className="px-4 py-4 space-y-4">
-              {navItems.map((item, index) => (
+              {navKeys.map((item, index) => (
                 <motion.a
-                  key={item.name}
+                  key={item.key}
                   href={item.href}
                   className="block font-mono text-gray-400 hover:text-primary transition-colors"
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -107,9 +125,28 @@ const Navbar = () => {
                   transition={{ delay: index * 0.05 }}
                 >
                   <span className="text-primary mr-2">{String(index).padStart(2, '0')}.</span>
-                  {item.name}
+                  {t(item.key)}
                 </motion.a>
               ))}
+              {/* Mobile Language Toggle */}
+              <div className="flex items-center justify-between pt-2 border-t border-gray-800">
+                <button
+                  onClick={toggleLanguage}
+                  className="font-mono text-sm flex items-center gap-1 cursor-pointer"
+                >
+                  <span className={currentLang === 'en' ? 'text-primary' : 'text-gray-500'}>EN</span>
+                  <span className="text-gray-600">|</span>
+                  <span className={currentLang === 'tr' ? 'text-primary' : 'text-gray-500'}>TR</span>
+                </button>
+                <motion.a
+                  href={resumeUrl}
+                  target="_blank"
+                  className="px-4 py-2 border border-primary text-primary font-mono text-sm rounded hover:bg-primary/10 transition-all"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {t('nav.resume')}
+                </motion.a>
+              </div>
             </div>
           </motion.div>
         )}
