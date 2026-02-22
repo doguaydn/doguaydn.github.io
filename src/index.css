@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Press+Start+2P&display=swap');
 
 @import "tailwindcss";
 
@@ -189,4 +189,111 @@
     linear-gradient(rgba(168, 85, 247, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(168, 85, 247, 0.03) 1px, transparent 1px);
   background-size: 50px 50px;
+}
+
+/* RPG Theme */
+.font-pixel {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.rpg-border {
+  border: 2px solid #a855f7;
+  box-shadow: inset 0 0 0 2px #0a0a0a, inset 0 0 0 4px rgba(168, 85, 247, 0.3);
+  position: relative;
+}
+
+.rpg-border::before,
+.rpg-border::after {
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border: 2px solid #a855f7;
+  background: #0a0a0a;
+}
+
+.rpg-border::before {
+  top: -5px;
+  left: -5px;
+}
+
+.rpg-border::after {
+  top: -5px;
+  right: -5px;
+}
+
+.rpg-corner-bl::before {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: -5px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid #a855f7;
+  background: #0a0a0a;
+}
+
+.rpg-corner-br::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  width: 8px;
+  height: 8px;
+  border: 2px solid #a855f7;
+  background: #0a0a0a;
+}
+
+/* RPG stat bar */
+.rpg-bar {
+  height: 16px;
+  background: #1a1a1a;
+  border: 2px solid #333;
+  position: relative;
+  image-rendering: pixelated;
+}
+
+.rpg-bar-fill {
+  height: 100%;
+  position: relative;
+  transition: width 1s ease-out;
+}
+
+.rpg-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* RPG difficulty stars */
+.rpg-stars {
+  letter-spacing: 2px;
+  color: #f59e0b;
+  text-shadow: 0 0 5px rgba(245, 158, 11, 0.5);
+}
+
+/* Quest status badge */
+.quest-badge {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 8px;
+  padding: 4px 8px;
+  border: 1px solid;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Pixel scanline overlay for retro feel */
+.scanlines {
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.03) 2px,
+    rgba(0, 0, 0, 0.03) 4px
+  );
+  pointer-events: none;
 }

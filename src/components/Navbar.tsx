@@ -39,16 +39,16 @@ const Navbar = () => {
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? 'bg-dark-900/90 backdrop-blur-md border-b border-primary/10'
+          ? 'bg-dark-900/90 backdrop-blur-md border-b-2 border-primary/20'
           : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
+          {/* Logo - RPG pixel style */}
           <motion.a
             href="#home"
-            className="font-mono text-xl font-bold text-primary"
+            className="font-pixel text-xs text-primary"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
@@ -57,7 +57,6 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center flex-1">
-            {/* Spacer to balance right side */}
             <div className="w-24 shrink-0" />
             <div className="flex items-center gap-8 mx-auto">
               {navKeys.map((item, index) => (
@@ -79,7 +78,7 @@ const Navbar = () => {
             <div className="flex items-center gap-4 ml-4 shrink-0">
               <button
                 onClick={toggleLanguage}
-                className="font-mono text-sm flex items-center gap-1 cursor-pointer"
+                className="font-pixel text-[8px] flex items-center gap-1.5 cursor-pointer px-2 py-1 border border-gray-700/50 hover:border-primary/50 transition-colors"
               >
                 <span className={currentLang === 'en' ? 'text-primary' : 'text-gray-500'}>EN</span>
                 <span className="text-gray-600">|</span>
@@ -88,7 +87,7 @@ const Navbar = () => {
               <motion.a
                 href={resumeUrl}
                 target="_blank"
-                className="px-4 py-2 border border-primary text-primary font-mono text-sm rounded hover:bg-primary/10 transition-all"
+                className="px-4 py-2 border-2 border-primary text-primary font-pixel text-[8px] hover:bg-primary/10 transition-all"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -115,7 +114,7 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-dark-800/95 backdrop-blur-md border-b border-primary/10"
+            className="md:hidden bg-dark-800/95 backdrop-blur-md border-b-2 border-primary/20"
           >
             <div className="px-4 py-4 space-y-4">
               {navKeys.map((item, index) => (
@@ -136,7 +135,7 @@ const Navbar = () => {
               <div className="flex items-center justify-between pt-2 border-t border-gray-800">
                 <button
                   onClick={toggleLanguage}
-                  className="font-mono text-sm flex items-center gap-1 cursor-pointer"
+                  className="font-pixel text-[8px] flex items-center gap-1.5 cursor-pointer px-2 py-1 border border-gray-700/50"
                 >
                   <span className={currentLang === 'en' ? 'text-primary' : 'text-gray-500'}>EN</span>
                   <span className="text-gray-600">|</span>
@@ -145,7 +144,7 @@ const Navbar = () => {
                 <motion.a
                   href={resumeUrl}
                   target="_blank"
-                  className="px-4 py-2 border border-primary text-primary font-mono text-sm rounded hover:bg-primary/10 transition-all"
+                  className="px-4 py-2 border-2 border-primary text-primary font-pixel text-[8px] hover:bg-primary/10 transition-all"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {t('nav.resume')}
