@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import Typed from 'typed.js';
 import { FiGithub, FiLinkedin, FiMail, FiChevronDown } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
-
 const Hero = () => {
   const { t, i18n } = useTranslation();
   const typedRef = useRef<HTMLSpanElement>(null);

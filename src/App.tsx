@@ -9,10 +9,8 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import ScrollProgress from './components/ScrollProgress';
 import LoadingScreen from './components/LoadingScreen';
 import SpotlightCursor from './components/SpotlightCursor';
-import ParallaxDivider from './components/ParallaxDivider';
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -23,7 +21,6 @@ function App() {
   }, []);
 
   useEffect(() => {
-    // Scroll animation observer
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -50,37 +47,25 @@ function App() {
 
       {!loading && (
         <div className="relative min-h-screen bg-dark-900 grid-bg overflow-x-hidden">
-          {/* Noise overlay */}
           <div className="noise-overlay" />
-
-          {/* Spotlight cursor */}
           <SpotlightCursor />
-
-          {/* Scroll progress bar */}
-          <ScrollProgress />
-
-          {/* Particles background */}
           <Particles />
-
-          {/* Navigation */}
           <Navbar />
 
-          {/* Main content */}
           <main className="relative z-10 w-full">
             <Hero />
-            <ParallaxDivider variant={0} />
+            <div className="py-16" />
             <About />
-            <ParallaxDivider variant={1} />
+            <div className="py-16" />
             <Skills />
-            <ParallaxDivider variant={2} />
+            <div className="py-16" />
             <Projects />
-            <ParallaxDivider variant={3} />
+            <div className="py-16" />
             <Experience />
-            <ParallaxDivider variant={4} />
+            <div className="py-16" />
             <Contact />
           </main>
 
-          {/* Footer */}
           <Footer />
         </div>
       )}
