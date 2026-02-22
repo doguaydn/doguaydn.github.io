@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FiGithub, FiLinkedin, FiMail, FiHeart } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
 import { useTranslation } from 'react-i18next';
 
 const Footer = () => {
@@ -43,7 +43,7 @@ const Footer = () => {
 
           {/* Copyright */}
           <p className="text-sm text-gray-500 font-mono flex items-center gap-1">
-            {t('footer.builtWith')} <FiHeart className="text-primary" size={14} /> {t('footer.by')}
+            {t('footer.text')}
             <span className="mx-2">•</span>
             {currentYear}
           </p>

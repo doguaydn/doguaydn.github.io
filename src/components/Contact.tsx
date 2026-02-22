@@ -150,7 +150,7 @@ const Contact = () => {
                   whileTap={{ scale: 0.98 }}
                   className="block w-full py-3 bg-primary text-dark-900 font-semibold text-center rounded-lg hover:bg-primary/90 transition-colors cursor-pointer"
                 >
-                  {copied ? '✓ Email Copied!' : `${t('contact.sayHello')} 👋`}
+                  {copied ? t('contact.emailCopied') : `${t('contact.sayHello')} 👋`}
                 </motion.button>
               </div>
             </div>

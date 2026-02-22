@@ -125,7 +125,7 @@
   "contact.terminalCmd2": "$ mesaj_gonder --kime doguaydin",
   "contact.terminalReady": "Mesajınızı bekliyorum...",
   "contact.sayHello": "Merhaba Deyin",
+  "contact.emailCopied": "✓ Email Kopyalandı!",
 
-  "footer.builtWith": "Sevgiyle yapıldı",
-  "footer.by": "Doğukan Aydın tarafından"
+  "footer.text": "Doğukan Aydın tarafından yapıldı"
 }

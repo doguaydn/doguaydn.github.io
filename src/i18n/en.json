@@ -125,7 +125,7 @@
   "contact.terminalCmd2": "$ send_message --to doguaydin",
   "contact.terminalReady": "Ready to receive your message...",
   "contact.sayHello": "Say Hello",
+  "contact.emailCopied": "✓ Email Copied!",
 
-  "footer.builtWith": "Built with",
-  "footer.by": "by Doğukan Aydın"
+  "footer.text": "Built by Doğukan Aydın"
 }
