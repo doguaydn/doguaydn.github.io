@@ -1,12 +1,14 @@
 import { motion } from 'framer-motion';
 import {
   SiNodedotjs, SiTypescript, SiJavascript,
-  SiPostgresql, SiMongodb, SiRedis, SiElasticsearch,
-  SiDocker, SiAmazon, SiNginx, SiGithubactions,
-  SiReact, SiVuedotjs, SiTailwindcss,
-  SiExpress, SiSpringboot, SiPrisma, SiSocketdotio
+  SiPostgresql, SiMongodb, SiRedis, SiElasticsearch, SiMysql, SiSqlite,
+  SiDocker, SiAmazon, SiNginx, SiGithubactions, SiDigitalocean, SiCloudflare,
+  SiReact, SiVuedotjs, SiTailwindcss, SiHtml5, SiExpo, SiVite,
+  SiExpress, SiSpringboot, SiPrisma, SiSocketdotio,
+  SiNestjs, SiRabbitmq, SiSwagger, SiHibernate, SiApachemaven, SiFirebase
 } from 'react-icons/si';
 import { FaJava } from 'react-icons/fa';
+import { VscDatabase } from 'react-icons/vsc';
 import { useTranslation } from 'react-i18next';
 
 const Skills = () => {
@@ -20,9 +22,13 @@ const Skills = () => {
       technologies: [
         { icon: SiNodedotjs, name: 'Node.js', color: '#339933' },
         { icon: SiExpress, name: 'Express.js', color: '#ffffff' },
+        { icon: SiNestjs, name: 'NestJS', color: '#E0234E' },
         { icon: SiTypescript, name: 'TypeScript', color: '#3178C6' },
         { icon: FaJava, name: 'Java', color: '#007396' },
         { icon: SiSpringboot, name: 'Spring Boot', color: '#6DB33F' },
+        { icon: SiHibernate, name: 'Hibernate', color: '#59666C' },
+        { icon: SiRabbitmq, name: 'RabbitMQ', color: '#FF6600' },
+        { icon: SiFirebase, name: 'Firebase', color: '#FFCA28' },
         { icon: SiSocketdotio, name: 'Socket.io', color: '#ffffff' },
       ],
     },
@@ -32,6 +38,9 @@ const Skills = () => {
       color: '#3b82f6',
       technologies: [
         { icon: SiPostgresql, name: 'PostgreSQL', color: '#4169E1' },
+        { icon: SiMysql, name: 'MySQL', color: '#4479A1' },
+        { icon: VscDatabase, name: 'MSSQL', color: '#CC2927' },
+        { icon: SiSqlite, name: 'SQLite', color: '#003B57' },
         { icon: SiMongodb, name: 'MongoDB', color: '#47A248' },
         { icon: SiRedis, name: 'Redis', color: '#DC382D' },
         { icon: SiElasticsearch, name: 'Elasticsearch', color: '#005571' },
@@ -44,7 +53,11 @@ const Skills = () => {
       color: '#be185d',
       technologies: [
         { icon: SiDocker, name: 'Docker', color: '#2496ED' },
+        { icon: SiDocker, name: 'Docker Compose', color: '#2496ED' },
         { icon: SiAmazon, name: 'AWS', color: '#FF9900' },
+        { icon: SiAmazon, name: 'EC2', color: '#FF9900' },
+        { icon: SiDigitalocean, name: 'DigitalOcean', color: '#0080FF' },
+        { icon: SiCloudflare, name: 'Cloudflare', color: '#F38020' },
         { icon: SiNginx, name: 'Nginx', color: '#009639' },
         { icon: SiGithubactions, name: 'GitHub Actions', color: '#2088FF' },
       ],
@@ -55,9 +68,13 @@ const Skills = () => {
       color: '#c084fc',
       technologies: [
         { icon: SiReact, name: 'React', color: '#61DAFB' },
+        { icon: SiReact, name: 'React Native', color: '#61DAFB' },
         { icon: SiVuedotjs, name: 'Vue.js', color: '#4FC08D' },
+        { icon: SiHtml5, name: 'HTML5', color: '#E34F26' },
         { icon: SiJavascript, name: 'JavaScript', color: '#F7DF1E' },
         { icon: SiTailwindcss, name: 'Tailwind', color: '#06B6D4' },
+        { icon: SiExpo, name: 'Expo', color: '#000020' },
+        { icon: SiVite, name: 'Vite', color: '#646CFF' },
       ],
     },
   ];
@@ -150,7 +167,7 @@ const Skills = () => {
             {t('skills.otherTools')}
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            {['Git', 'Linux', 'REST API', 'JWT', 'Microservices', 'Agile/Scrum', 'Jira', 'Postman', 'PM2', 'Sequelize'].map((skill, index) => (
+            {['Git', 'Linux', 'REST API', 'JWT', 'OAuth2', 'WebSocket', 'Swagger/OpenAPI', 'Maven', 'Microservices', 'Agile/Scrum', 'Jira', 'Postman', 'Figma', 'PM2', 'Sequelize', 'TypeORM', 'Mongoose'].map((skill, index) => (
               <motion.span
                 key={skill}
                 initial={{ opacity: 0 }}
